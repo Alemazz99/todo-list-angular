@@ -1,15 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-  <span class="navbar-brand">My TODO List</span>
-  <div class="navbar-nav">
-      <!-- <a class="nav-item nav-link" href="#">LIST</a>
-      <a class="nav-item nav-link" href="#">ADD</a> -->
-      <a class="nav-item nav-link" routerLink="/add" routerLinkActive="text-danger">ADD</a>
-      <a class="nav-item nav-link" routerLink="/list" routerLinkActive="text-danger">LIST</a>
-      <a class="nav-item nav-link" routerLink="/favorite" routerLinkActive="text-danger">FAVORITE TODO LIST</a>
-  </div>
-</nav>
-<div class="container">
-  <!-- <app-todo-form></app-todo-form>
-  <app-todo-list></app-todo-list> -->
-  <router-outlet></router-outlet>
+<div class="main">
+  <h1>My To Do List</h1>
+  <label for="addItemInput">What would you like to do today?</label>
+
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput" />
+  
+  <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  
+  <ul>
+    <li *ngFor="let item of items">{{item.description}}</li>
+  </ul>
 </div>
