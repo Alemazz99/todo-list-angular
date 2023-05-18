@@ -13,9 +13,7 @@ export class AppComponent {
 
   filter: "all" | "active" | "done" = "all";
 
-  allItems = [
-    { description: "Pane", done: false },
-  ];
+  allItems : Item[] = [];
 
   get items() {
     if (this.filter === "all") {

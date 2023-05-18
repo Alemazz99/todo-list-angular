@@ -58,9 +58,6 @@
     margin: 1rem 0;
   }
   
-  /* Custom checkboxes
-  Adapted from https://css-tricks.com/the-checkbox-hack/#custom-designed-radio-buttons-and-checkboxes */
-  
   /* Base for label styling */
   [type="checkbox"]:not(:checked),
   [type="checkbox"]:checked {
@@ -96,9 +93,8 @@
     left: 0.22em;
     font-size: 1.3em;
     line-height: 0.8;
-    color: #0d8dee;
+    color: #05a548;
     transition: all 0.2s;
-    font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
   }
   /* checked mark aspect changes */
   [type="checkbox"]:not(:checked) + label:after {
@@ -110,9 +106,4 @@
     transform: scale(1);
   }
   
-  /* accessibility */
-  [type="checkbox"]:checked:focus + label:before,
-  [type="checkbox"]:not(:checked):focus + label:before {
-    border: 2px dotted blue;
-  }
   
