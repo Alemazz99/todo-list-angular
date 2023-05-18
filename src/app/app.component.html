@@ -1,15 +1,52 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-  <span class="navbar-brand">My TODO List</span>
-  <div class="navbar-nav">
-      <!-- <a class="nav-item nav-link" href="#">LIST</a>
-      <a class="nav-item nav-link" href="#">ADD</a> -->
-      <a class="nav-item nav-link" routerLink="/add" routerLinkActive="text-danger">ADD</a>
-      <a class="nav-item nav-link" routerLink="/list" routerLinkActive="text-danger">LIST</a>
-      <a class="nav-item nav-link" routerLink="/favorite" routerLinkActive="text-danger">FAVORITE TODO LIST</a>
-  </div>
-</nav>
-<div class="container">
-  <!-- <app-todo-form></app-todo-form>
-  <app-todo-list></app-todo-list> -->
-  <router-outlet></router-outlet>
+<div class="main">
+  <h1>To Do List</h1>
+  <label for="addItemInput">Che cosa devi fare oggi?</label>
+
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput"
+    [(ngModel)]="item" />
+
+
+    <button class="btn-primary" [disabled]="item ===''" (click)="addItem(newItem.value)">Add</button>
+  
+  <!-- Buttons that show all, still to do, or done items on click -->
+<div class="btn-wrapper">
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'all'"
+    (click)="filter = 'all'">
+    All
+  </button>
+
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'active'"
+    (click)="filter = 'active'">
+    To Do
+  </button>
+
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'done'"
+    (click)="filter = 'done'">
+    Done
+  </button>
+</div>
+
+  <h2>
+    {{items.length}}
+    <span *ngIf="items.length === 1; else elseBlock">item</span>
+    <ng-template #elseBlock>items</ng-template>
+  </h2>
+  
+  <ul>
+    <li *ngFor="let i of items">
+      <app-item (remove)="remove(i)" [item]="i"></app-item>
+    </li>
+  </ul>
+  
 </div>
