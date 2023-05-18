@@ -1,4 +1,7 @@
 import { Component } from "@angular/core";
+import { Item } from "./item";
+
+
 
 @Component({
   selector: "app-root",
@@ -11,7 +14,7 @@ export class AppComponent {
   filter: "all" | "active" | "done" = "all";
 
   allItems = [
-    { description: "Pane", done: true },
+    { description: "Pane", done: false },
   ];
 
   get items() {
@@ -28,6 +31,10 @@ export class AppComponent {
       done: false
     });
   }
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
+  }
+  
   
 }
 
