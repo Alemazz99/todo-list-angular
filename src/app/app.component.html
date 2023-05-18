@@ -7,9 +7,11 @@
     placeholder="add an item"
     (keyup.enter)="addItem(newItem.value); newItem.value = ''"
     class="lg-text-input"
-    id="addItemInput" />
-  
-  <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+    id="addItemInput"
+    [(ngModel)]="item" />
+
+
+    <button class="btn-primary" [disabled]="item ===''" (click)="addItem(newItem.value)">Add</button>
   
   <!-- Buttons that show all, still to do, or done items on click -->
 <div class="btn-wrapper">
