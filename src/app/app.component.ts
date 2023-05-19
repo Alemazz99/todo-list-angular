@@ -9,6 +9,10 @@ import { Item } from "./item";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  goToLink() {
+    window.open('/ticket', 'ticket');
+    window.open('/item', 'item')
+  }
 
   item='';
 
